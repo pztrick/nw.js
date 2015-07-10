@@ -1010,6 +1010,10 @@
         ['OS == "linux"', {
           'ldflags': [
             '-Wl,--whole-archive', 'obj/third_party/node/libnode.a', '-Wl,--no-whole-archive' ],
+	  'ldflags!': [
+	    # suppresses fatal warnings; see https://code.google.com/p/chromium/issues/detail?id=353127
+	    # mixed usage of sysroot/bundled pango library for harfbuzz-ng
+	    '-Wl,--fatal-warnings'],
         }],
         ['OS == "win"', {
           'dependencies': [
